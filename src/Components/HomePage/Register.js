@@ -1,10 +1,9 @@
 import React from 'react';
-import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { Col, Container, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
-
-const HomePage = () => {
+const Register = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         reset();
@@ -12,20 +11,16 @@ const HomePage = () => {
     return (
         <>
             <Container>
-                <h1 className='text-center fw-bolder display-1 mt-4'><span className=' text-secondary'>Welcome to</span> <span className='text-warning'>Power Hack</span></h1>
-
+                <h1 className='text-center fw-bolder display-1 mt-4'><span className=' text-secondary'>Register to</span> <span className='text-warning'>Power Hack</span></h1>
                 <Row>
-                    <Col lg={7}>
-                        <img className='w-100' src="https://i.ibb.co/Xs0JQbv/pngwing-com.png" alt="" />
-                    </Col>
-                    <Col lg={5} className='my-auto'>
+                    <Col className='my-auto' lg={5}>
                         <form className='p-5 base-bg rounded my-3 shadow' onSubmit={handleSubmit(onSubmit)}>
-                            <h4 className='text-center fw-bolder text-secondary mb-5'>Login</h4>
+                            <h4 className='text-center fw-bolder text-secondary mb-5'>Register</h4>
                             <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1">
                                 <Form.Control className='text-center'
                                     type="text"
                                     placeholder='Your Email'
-                                    autoComplete='none'
+                                    autoComplete='off'
 
                                     {...register("email",
                                         {
@@ -50,8 +45,44 @@ const HomePage = () => {
                             <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1">
                                 <Form.Control className='text-center'
                                     type="text"
+                                    placeholder='Your Phone Number'
+                                    autoComplete='off'
+
+                                    {...register("phone",
+                                        {
+                                            required: {
+                                                value: true,
+                                                message: 'Phone Number is required'
+                                            },
+                                            minLength: {
+                                                value: 11,
+                                                message: 'Phone Number must be numeric and 11 digits'
+                                            },
+                                            maxLength: {
+                                                value: 11,
+                                                message: 'Phone Number must be numeric and 11 digits'
+                                            },
+                                            pattern: {
+                                                value: /^[0-9]+$/,
+                                                message: 'Phone Number must be numeric and 11 digits'
+                                            },
+                                        })}
+                                />
+                                <Form.Label>
+                                    <small className='text-danger mt-2'>
+                                        {errors.phone?.type === 'required' && errors?.phone?.message}
+                                        {errors.phone?.type === 'minLength' && errors?.phone?.message}
+                                        {errors.phone?.type === 'maxLength' && errors?.phone?.message}
+                                        {errors.phone?.type === 'pattern' && errors?.phone?.message}
+
+                                    </small>
+                                </Form.Label>
+                            </Form.Group>
+                            <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1">
+                                <Form.Control className='text-center'
+                                    type="text"
                                     placeholder='Your Password'
-                                    autoComplete='none'
+                                    autoComplete='off'
 
                                     {...register("password",
                                         {
@@ -74,16 +105,17 @@ const HomePage = () => {
                                 </Form.Label>
                             </Form.Group>
 
-                            <input className='text-center d-block mt-4 w-50 mx-auto bg-warning border-0 rounded-3 py-2 text-white' value={'Login'} type="Submit" />
-                            <p className='my-3 text-center'><small>New to Power-Hack ?</small>  <Link to='register'><small>Register a new account</small></Link> </p>
+                            <input className='text-center d-block mt-4 w-50 mx-auto bg-warning border-0 rounded-3 py-2 text-white' value={'Register'} type="Submit" />
+                            <p className='my-3 text-center'><small>Already registered ? <Link to='/'>Visit Login page</Link></small></p>
                         </form>
-
+                    </Col>
+                    <Col lg={7}>
+                        <img className='w-100' src="https://i.ibb.co/vcd7Lvy/pngwing-com-1.png" alt="" />
                     </Col>
                 </Row>
-
-            </Container >
+            </Container>
         </>
     );
 };
 
-export default HomePage;
+export default Register;
