@@ -1,12 +1,16 @@
 import React from 'react';
 import { Col, Container, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Register = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const navigate = useNavigate();
     const onSubmit = data => {
         reset();
+        toast.success('Registration Success. You can Login now');
+        navigate('/');
     };
     return (
         <>
