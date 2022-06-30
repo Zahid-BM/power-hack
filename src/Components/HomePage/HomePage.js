@@ -11,7 +11,7 @@ const HomePage = () => {
     const onSubmit = data => {
         reset();
         toast.success('Login Success')
-        navigate('/billing')
+        navigate('billing')
     };
     return (
         <>
