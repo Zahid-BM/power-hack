@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button, Container, Form, Nav, Navbar, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -5,8 +6,8 @@ import useBillingList from '../../hooks/useBillingList';
 import Header from './Header';
 
 const Billing = () => {
-    const [blillingList, setBillingList] = useBillingList()
-    console.log(blillingList);
+    const [blillingList, setBillingList]= useBillingList()
+
     return (
         <>
             <Header></Header>
@@ -47,7 +48,7 @@ const Billing = () => {
                             <th className='text-secondary'>Paid Amount</th>
                             <th className='text-secondary'>Action</th>
 
-                        </tr>   
+                        </tr>
                     </thead>
                     <tbody className=''>
                         {
@@ -58,12 +59,11 @@ const Billing = () => {
                                 <td className=''><small>{billing?.phone}</small></td>
                                 <td className=''><small>{billing?.paidAmount}</small></td>
                                 <td className=''><Button variant='secondary' size='sm'>Edit</Button> || <Button variant='danger' size='sm'>Delete</Button></td>
-                             
+
                             </tr>)
                         }
                     </tbody>
                 </Table>
-
             </Container>
 
         </>

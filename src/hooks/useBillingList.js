@@ -5,7 +5,7 @@ const useBillingList = () => {
     const [blillingList, setBillingList] = useState([]);
     useEffect(() => {
         const getBillingList = async () => {
-            const { data } = await axios.get('http://localhost:5000/billing-list');
+            const { data } = await axios.get('http://localhost:8000/billing-list');
             setBillingList(data);
         }
         getBillingList();
