@@ -84,7 +84,7 @@ const Register = () => {
                             </Form.Group>
                             <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1">
                                 <Form.Control className='text-center'
-                                    type="text"
+                                    type="password"
                                     placeholder='Your Password'
                                     autoComplete='off'
 
